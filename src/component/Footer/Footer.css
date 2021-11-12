@@ -1,0 +1,20 @@
+.footer-bg {
+  background-image: url(https://i.ibb.co/QbzNhf8/photo-1599135291755-edf17d07f0cd.jpg);
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  padding: 180px;
+  font-weight: 500;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.815);
+  opacity: 0.95;
+}
+
+.footer-button p:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.footer-button i:hover {
+  color: red;
+  cursor: pointer;
+}

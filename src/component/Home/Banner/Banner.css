@@ -1,0 +1,26 @@
+.banner {
+  background-image: url(https://i.ibb.co/v3MCRN3/photo-1603086603138-ba3f3c812e4c.jpg);
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  padding: 180px;
+  font-weight: 500;
+  background-size: cover;
+}
+.banner-text {
+  font-family: "Anton", sans-serif;
+  font-weight: 300;
+  color: aliceblue;
+}
+
+.button {
+  background-color: #94b3fd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: black;
+  font-weight: 500;
+}
+.button:hover {
+  background-color: white;
+  color: red;
+  font-weight: 900;
+}

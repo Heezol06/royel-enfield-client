@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from './component/Footer/Footer';
+import Headers from './component/Home/Headers/Headers';
+import Home from './component/Home/Home/Home';
+import Login from './component/Login/Login';
+import Register from './component/Login/Register/Register';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import AuthProvider from './component/Context/AuthProvider';
+import Bikes from './component/Bikes/Bikes';
+import BikeDetails from './component/BikeDetails/BikeDetails';
+import Review from './component/Review/Review';
+import MyOrder from './component/MyOrder/MyOrder';
+import PrivetRoute from './component/PrivetRoute/PrivetRoute';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <AuthProvider>
+     <Router>
+          <Headers></Headers>
+        <Switch>
+        <Route exact path="/">
+        <Home></Home>
+        </Route>
+        <Route path="/home">
+            <Home />
+          </Route>
+        <Route path="/bikes">
+            <Bikes></Bikes>
+          </Route>
+        <Route path="/review">
+            <Review></Review>
+          </Route>
+        <PrivetRoute path="/myOrder">
+            <MyOrder></MyOrder>
+          </PrivetRoute>
+        <Route path="/bikeDetails/:bikeId">
+            <BikeDetails></BikeDetails>
+          </Route>
+          <Route path="/login">
+            <Login/> 
+          </Route>
+          <Route path="/register">
+            <Register/> 
+          </Route>
+        </Switch>
+              <Footer></Footer>
+      </Router>
+     </AuthProvider>
     </div>
   );
 }
