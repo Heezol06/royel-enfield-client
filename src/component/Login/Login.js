@@ -17,9 +17,10 @@ const Login = () => {
         newLoginData[field] = value;
         setLoginData(newLoginData)
     }
+    console.log(loginData);
     const handleLoginSubmit = e =>{
         loginUser(loginData.email, loginData.password, location, history)
-        console.log(loginUser)
+        // console.log(loginUser)
         e.preventDefault()
     }
     return (

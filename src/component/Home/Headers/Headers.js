@@ -36,16 +36,13 @@ const Headers = () => {
               Bikes
             </Nav.Link>
       </Link>
-    <Link to="/myOrder" className="text-decoration-none me-4">
+    {user.email ?<Link to="/dashboard" className="text-decoration-none me-4">
             <Nav.Link eventKey={2} href="#memes" >
-              My Order
+              Dashboard
             </Nav.Link>
       </Link>
-    <Link to="/review" className="text-decoration-none me-4">
-            <Nav.Link eventKey={2} href="#memes" >
-              Review
-            </Nav.Link>
-      </Link>
+    : ""  
+    }
       {user.email ?
       <Button className="bg-danger" onClick={logout}>Logout</Button>
       :

@@ -4,7 +4,7 @@ import Bike from '../Bike/Bike';
 const Bikes = () => {
             const [products, setProducts] =  useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/bikes')
+        fetch('https://limitless-woodland-93842.herokuapp.com/bikes')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])

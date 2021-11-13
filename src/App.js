@@ -14,6 +14,7 @@ import BikeDetails from './component/BikeDetails/BikeDetails';
 import Review from './component/Review/Review';
 import MyOrder from './component/MyOrder/MyOrder';
 import PrivetRoute from './component/PrivetRoute/PrivetRoute';
+import Dashboard from './component/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -34,12 +35,15 @@ function App() {
         <Route path="/review">
             <Review></Review>
           </Route>
+        <PrivetRoute path="/dashboard">
+            <Dashboard></Dashboard>
+          </PrivetRoute>
         <PrivetRoute path="/myOrder">
             <MyOrder></MyOrder>
           </PrivetRoute>
-        <Route path="/bikeDetails/:bikeId">
+        <PrivetRoute path="/bikeDetails/:bikeId">
             <BikeDetails></BikeDetails>
-          </Route>
+          </PrivetRoute>
           <Route path="/login">
             <Login/> 
           </Route>

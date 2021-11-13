@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 const BikeDetails = () => {
+    const {user} = useAuth()
     const [bikeDetails, setBikeDetails] = useState([]);
-    const [bookingInfo , setBookingInfo] = useState({});
-    console.log(bikeDetails);
+    // console.log(bikeDetails.name);
+    
     const {bikeId} = useParams();
+    
+    // console.log(bikeId);
+
+    const initialInfo = { userName: user.displayName, email: user.email, BikeModel: bikeId.name }
+
+    const [bookingInfo , setBookingInfo] = useState(initialInfo);
 
     const handleOnChange = e =>{
         const field = e.target.name;
@@ -20,7 +28,7 @@ const BikeDetails = () => {
                ...bookingInfo};
                console.log(userBookingData);
 
-               fetch('http://localhost:5000/addOrderInfo',{
+               fetch('https://limitless-woodland-93842.herokuapp.com/addOrderInfo',{
                    method: "POST",
                    headers: {'content-type': 'application/json'},
                    body: JSON.stringify(userBookingData)
@@ -34,7 +42,7 @@ const BikeDetails = () => {
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/bikes/${bikeId}`)
+        fetch(`https://limitless-woodland-93842.herokuapp.com/bikes/${bikeId}`)
         .then(res => res.json())
         .then(data => setBikeDetails(data))
     },[])
@@ -64,7 +72,7 @@ const BikeDetails = () => {
         <Form onSubmit={handlePurchaseSubmit} >
         <Form.Group className="mb-3 w-75 text-start" >
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" onChange={handleOnChange} name="email" placeholder="Enter email" />
+            <Form.Control type="email" onChange={handleOnChange} name="email" defaultValue={user.email} />
         </Form.Group>
         <Form.Group className="mb-3 w-75 text-start" >
             <Form.Label>Phone Number</Form.Label>
@@ -72,7 +80,7 @@ const BikeDetails = () => {
         </Form.Group>
         <Form.Group className="mb-3 w-75 text-start">
             <Form.Label>Bike Model</Form.Label>
-            <Form.Control type="text" onChange={handleOnChange} name="Bike" placeholder="Bike Model" value={bikeDetails.name}/>
+            <Form.Control type="text" onChange={handleOnChange} name="Bike" placeholder="Bikes Name" defaultValue={bikeDetails.name && ''}/>
         </Form.Group>
         <Form.Group className="mb-3 w-75 text-start">
             <Form.Label>Region</Form.Label>
