@@ -6,6 +6,7 @@
   font-weight: 500;
   background-size: cover;
 }
+
 .banner-text {
   font-family: "Anton", sans-serif;
   font-weight: 300;
@@ -19,8 +20,21 @@
   color: black;
   font-weight: 500;
 }
+
 .button:hover {
   background-color: white;
   color: red;
   font-weight: 900;
+}
+
+@media only screen and (max-width: 688px) {
+  .banner {
+    padding: 20px;
+  }
+
+  ;
+
+  .banner-text {
+    line-height: 10px;
+  }
 }
